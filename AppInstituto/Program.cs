@@ -11,6 +11,7 @@ namespace AppInstituto
 {
     public class Program
     {
+        //Comentario
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
