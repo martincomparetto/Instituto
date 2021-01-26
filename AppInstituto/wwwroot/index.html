@@ -5,18 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=800, initial-scale=1.0">
     <title>Instituto App</title>
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="Views/alumnos.html">Alumnos</a></li>
-            <li><a href="#">Profesores</a></li>
-            <li><a href="#">Materias</a></li>
+    <div>
+        <h1>Comunidad IT</h1>
+    </div>
+    <div id="navMenu">
+        <ul class="nav">
+            <li><a href="">Archivos</a>
+                <ul>
+                    <li><a href="Views/alumnos.html">Alumnos</a></li>
+                    <li><a href="#">Profesores</a></li>
+                    <li><a href="#">Materias</a></li>
+                </ul>
+            </li>
+            <li><a href="">Procesos</a>
+                <ul>
+                    <li><a href="">Inscribir Alumno</a></li>
+                </ul>
+            </li>
         </ul>
-    </nav>
-    <h1>Comunidad IT</h1>
-    <h2>Pantalla principal</h2>
+    </div>
+    <div>
+        <h2>Pantalla principal</h2>
+    </div>
     <form>
         <div>
             <label for="nombre">Nombre</label>
@@ -28,7 +42,7 @@
         </div>
         <div>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
+            <input type="email" id="email" name="email" />
         </div>
         <div>
             <label for="estadoCivil">Estado Civil</label>
