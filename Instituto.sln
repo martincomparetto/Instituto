@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInstituto", "AppInstituto\AppInstituto.csproj", "{299CCF8D-E44F-40A2-A35A-C801D423B7D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstWeb", "InstWeb\InstWeb.csproj", "{841AA571-607A-4722-ABDC-01A05D936980}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{299CCF8D-E44F-40A2-A35A-C801D423B7D3}.Release|x64.Build.0 = Release|Any CPU
 		{299CCF8D-E44F-40A2-A35A-C801D423B7D3}.Release|x86.ActiveCfg = Release|Any CPU
 		{299CCF8D-E44F-40A2-A35A-C801D423B7D3}.Release|x86.Build.0 = Release|Any CPU
+		{841AA571-607A-4722-ABDC-01A05D936980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{841AA571-607A-4722-ABDC-01A05D936980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{841AA571-607A-4722-ABDC-01A05D936980}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{841AA571-607A-4722-ABDC-01A05D936980}.Debug|x64.Build.0 = Debug|Any CPU
+		{841AA571-607A-4722-ABDC-01A05D936980}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{841AA571-607A-4722-ABDC-01A05D936980}.Debug|x86.Build.0 = Debug|Any CPU
+		{841AA571-607A-4722-ABDC-01A05D936980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{841AA571-607A-4722-ABDC-01A05D936980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{841AA571-607A-4722-ABDC-01A05D936980}.Release|x64.ActiveCfg = Release|Any CPU
+		{841AA571-607A-4722-ABDC-01A05D936980}.Release|x64.Build.0 = Release|Any CPU
+		{841AA571-607A-4722-ABDC-01A05D936980}.Release|x86.ActiveCfg = Release|Any CPU
+		{841AA571-607A-4722-ABDC-01A05D936980}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,34 @@
+<h1>Crear Alumnos</h1>
+<form>
+    <div>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required />
+    </div>
+    <div>
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" name="apellido" required />
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+    </div>
+    <div>
+        <label for="estadoCivil">Estado Civil</label>
+        <input type="radio" name="estadoCivil" value="soltero">Soltero
+        <input type="radio" name="estadoCivil" value="casado">Casado
+        <input type="radio" name="estadoCivil" value="separado">Separado
+        <input type="radio" name="estadoCivil" value="nsnc">NS/NC
+    </div>
+    <div>
+        <select name="rangoEdad">
+            <option value="1">Menor de 18</option>
+            <option value="2">Entre 18 y 35</option>
+            <option value="3">Entre 35 y 60</option>
+            <option value="4">Mayor de 60</option>
+        </select>
+    </div>
+
+    <div>
+        <input type="submit" value="Guardar">
+    </div>
+</form>
