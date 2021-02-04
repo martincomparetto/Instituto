@@ -1,16 +1,16 @@
 ﻿@model Alumno
 
 @{
-    ViewData["Title"] = "Crear";
+    ViewData["Title"] = "Editar";
 }
 
-<h1>Crear</h1>
+<h1>Editar</h1>
 
 <h4>Alumno</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Guardar">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ID" class="control-label"></label>
