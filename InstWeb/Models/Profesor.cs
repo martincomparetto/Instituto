@@ -1,15 +1,24 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-public class Profesor
+namespace InstWeb.Models
 {
-    public Guid ID { get; set; }
-    public string Nombre { get; set; }
-    public string Apellido { get; set; }
-    public string Email { get; set; }
-    public string Domicilio { get; set; }
-    public string Telefono { get; set; }
-    public DateTime FechaNacimiento { get; set; }
-    public int DNI { get; set; }
-    public List<Curso> Cursos { get; set; }
+    public class Profesor
+    {
+        [Key]
+        public Guid ID { get; set; }
+        [MaxLength(50)]
+        public string Nombre { get; set; }
+        [MaxLength(50)]
+        public string Apellido { get; set; }
+        [MaxLength(200)]
+        public string Email { get; set; }
+        [MaxLength(200)]
+        public string Domicilio { get; set; }
+        [MaxLength(50)]
+        public string Telefono { get; set; }
+        public DateTime FechaNacimiento { get; set; }
+        public int DNI { get; set; }
+    }
 }

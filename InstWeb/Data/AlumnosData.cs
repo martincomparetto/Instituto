@@ -1,15 +1,17 @@
-﻿using System;
+﻿using InstWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace InstWeb.Data
 {
-    public class AlumnosData
+    public class DataRepository
     {
         public List<Alumno> Data = new List<Alumno>();
+        public List<Profesor> DataProfesores = new List<Profesor>();
 
-        public AlumnosData()
+        public DataRepository()
         {
             Data.Add(new Alumno() { ID = Guid.Parse("e4bf0aba-649e-4874-bd72-f5824fc03924"), Nombre = "Juan", Apellido = "Roca", DNI = 11111111, Domicilio = "Los Angeles 1522", Email = "juan.roca@gmail.com", Telefono = "123456", FechaNacimiento = new DateTime(1981, 10, 23), Legajo = "0001" });
             Data.Add(new Alumno() { ID = Guid.Parse("78364d70-4444-4739-9946-0a8475a49a40"), Nombre = "Emma", Apellido = "Goya", DNI = 55555555, Domicilio = "Los Ombues 530", Email = "emma.goya@gmail.com", Telefono = "123456", FechaNacimiento = new DateTime(1999, 6, 30), Legajo = "0002" });
