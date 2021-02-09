@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InstWeb.Models
 {
@@ -20,5 +21,14 @@ namespace InstWeb.Models
         public string Telefono { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public int DNI { get; set; }
+
+        [NotMapped]
+        public string ApellidoNombre 
+        { 
+            get
+            {
+                return Apellido + ", " + Nombre;
+            }
+        }
     }
 }

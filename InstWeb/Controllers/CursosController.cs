@@ -10,22 +10,26 @@ using InstWeb.Models;
 
 namespace InstWeb.Controllers
 {
-    public class ProfesoresController : Controller
+    public class CursosController : Controller
     {
         private readonly InstitutoContext _context;
 
-        public ProfesoresController(InstitutoContext context)
+        public CursosController(InstitutoContext context)
         {
             _context = context;
         }
 
-        // GET: Profesores
+        // GET: Cursos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Profesores.ToListAsync());
+            var institutoContext = await _context.Cursos.Include(c => c.Profesor).ToListAsync();
+            
+            institutoContext = institutoContext.OrderBy(o => o.Denominacion).ToList();
+            
+            return View(institutoContext);
         }
 
-        // GET: Profesores/Details/5
+        // GET: Cursos/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -33,40 +37,43 @@ namespace InstWeb.Controllers
                 return NotFound();
             }
 
-            var profesor = await _context.Profesores
+            var curso = await _context.Cursos
+                .Include(c => c.Profesor)
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (profesor == null)
+            if (curso == null)
             {
                 return NotFound();
             }
 
-            return View(profesor);
+            return View(curso);
         }
 
-        // GET: Profesores/Create
+        // GET: Cursos/Create
         public IActionResult Create()
         {
+            ViewData["ProfesorID"] = new SelectList(_context.Profesores, "ID", "ApellidoNombre");
             return View();
         }
 
-        // POST: Profesores/Create
+        // POST: Cursos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Nombre,Apellido,Email,Domicilio,Telefono,FechaNacimiento,DNI")] Profesor profesor)
+        public async Task<IActionResult> Create([Bind("ID,Denominacion,ProfesorID")] Curso curso)
         {
             if (ModelState.IsValid)
             {
-                profesor.ID = Guid.NewGuid();
-                _context.Add(profesor);
+                curso.ID = Guid.NewGuid();
+                _context.Add(curso);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(profesor);
+            ViewData["ProfesorID"] = new SelectList(_context.Profesores, "ID", "ApellidoNombre", curso.ProfesorID);
+            return View(curso);
         }
 
-        // GET: Profesores/Edit/5
+        // GET: Cursos/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -74,22 +81,23 @@ namespace InstWeb.Controllers
                 return NotFound();
             }
 
-            var profesor = await _context.Profesores.FindAsync(id);
-            if (profesor == null)
+            var curso = await _context.Cursos.FindAsync(id);
+            if (curso == null)
             {
                 return NotFound();
             }
-            return View(profesor);
+            ViewData["ProfesorID"] = new SelectList(_context.Profesores, "ID", "ApellidoNombre", curso.ProfesorID);
+            return View(curso);
         }
 
-        // POST: Profesores/Edit/5
+        // POST: Cursos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ID,Nombre,Apellido,Email,Domicilio,Telefono,FechaNacimiento,DNI")] Profesor profesor)
+        public async Task<IActionResult> Edit(Guid id, [Bind("ID,Denominacion,ProfesorID")] Curso curso)
         {
-            if (id != profesor.ID)
+            if (id != curso.ID)
             {
                 return NotFound();
             }
@@ -98,12 +106,12 @@ namespace InstWeb.Controllers
             {
                 try
                 {
-                    _context.Update(profesor);
+                    _context.Update(curso);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProfesorExists(profesor.ID))
+                    if (!CursoExists(curso.ID))
                     {
                         return NotFound();
                     }
@@ -114,10 +122,11 @@ namespace InstWeb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(profesor);
+            ViewData["ProfesorID"] = new SelectList(_context.Profesores, "ID", "ApellidoNombre", curso.ProfesorID);
+            return View(curso);
         }
 
-        // GET: Profesores/Delete/5
+        // GET: Cursos/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -125,30 +134,31 @@ namespace InstWeb.Controllers
                 return NotFound();
             }
 
-            var profesor = await _context.Profesores
+            var curso = await _context.Cursos
+                .Include(c => c.Profesor)
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (profesor == null)
+            if (curso == null)
             {
                 return NotFound();
             }
 
-            return View(profesor);
+            return View(curso);
         }
 
-        // POST: Profesores/Delete/5
+        // POST: Cursos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var profesor = await _context.Profesores.FindAsync(id);
-            _context.Profesores.Remove(profesor);
+            var curso = await _context.Cursos.FindAsync(id);
+            _context.Cursos.Remove(curso);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProfesorExists(Guid id)
+        private bool CursoExists(Guid id)
         {
-            return _context.Profesores.Any(e => e.ID == id);
+            return _context.Cursos.Any(e => e.ID == id);
         }
     }
 }
