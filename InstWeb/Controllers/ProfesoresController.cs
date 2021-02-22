@@ -25,6 +25,11 @@ namespace InstWeb.Controllers
             return View(await _context.Profesores.ToListAsync());
         }
 
+        public async Task<List<Profesor>> GetAll()
+        {
+            return await _context.Profesores.ToListAsync();
+        }
+
         // GET: Profesores/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {

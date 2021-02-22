@@ -5,4 +5,31 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    Nombre: <input type="text" id="nombre">
+    <button onclick="Saludar(document.getElementById('nombre').value)">Saludar</button>
+    <br>
+    Sumar: <input type="number" id="num1"> + <input type="number" id="num2">
+    <button onclick="Sumar(document.getElementById('num1').value, document.getElementById('num2').value)">Resultado</button>
+    <input type="number" id="resultado" readonly>
+    <br>
+    <br>
+    <p>Mas info de JQuery en <a href="https://api.jquery.com/category/css/">JQuery</a>.</p>
+    <br>
+    <br>
+    <button onclick="ObtenerProfesores()">Obtener Profesores</button>
+    <br>
+    <div id="tablaProfesores">
+    </div>
+    @* <textarea name="json" id="json" cols="30" rows="10">cargando datos...</textarea> *@
+    @* <table id="listaProfesores" class="table">
+        <thead>
+            <td>Apellido y Nombre</td>
+            <td>Email</td>
+            <td>Domicilio</td>
+        </thead>
+        <tbody>
+        </tbody>
+    </table> *@
 </div>
+
