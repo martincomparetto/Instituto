@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InstWeb.Data;
 using InstWeb.Models;
+using InstWeb.ViewModel;
+using System.Collections.Generic;
 
 namespace InstWeb.Controllers
 {
@@ -25,9 +25,25 @@ namespace InstWeb.Controllers
             return View(await _context.Profesores.ToListAsync());
         }
 
-        public async Task<List<Profesor>> GetAll()
+        public async Task<ProfesorPaginated> GetAll(int page, int take)
         {
-            return await _context.Profesores.ToListAsync();
+            ProfesorPaginated profesoresResponse = new ProfesorPaginated();
+            profesoresResponse.CantidadRegistros = _context.Profesores.Count();
+            List<ProfesorVM> profesoresVM = new List<ProfesorVM>();
+
+            var profesoresDB = await _context.Profesores.Skip(page * take).Take(take).ToListAsync();
+            foreach (var item in profesoresDB)
+            {
+                profesoresVM.Add(new ProfesorVM() {
+                    ID = item.ID,
+                    Email = item.Email,
+                    Domicilio = item.Domicilio,
+                    ApellidoNombre = item.ApellidoNombre
+                });
+            }
+            profesoresResponse.Profesores = profesoresVM;
+
+            return profesoresResponse;
         }
 
         // GET: Profesores/Details/5

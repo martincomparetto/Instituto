@@ -19,17 +19,14 @@
     <br>
     <button onclick="ObtenerProfesores()">Obtener Profesores</button>
     <br>
-    <div id="tablaProfesores">
+    <div id="divTablaProfesores">
     </div>
-    @* <textarea name="json" id="json" cols="30" rows="10">cargando datos...</textarea> *@
-    @* <table id="listaProfesores" class="table">
-        <thead>
-            <td>Apellido y Nombre</td>
-            <td>Email</td>
-            <td>Domicilio</td>
-        </thead>
-        <tbody>
-        </tbody>
-    </table> *@
+    <div>
+        <button id="buttonPrimera" onclick="PaginaPrimera()">Primera</button>
+        <button id="buttonAnterior" onclick="PaginaAnterior()">Anterior</button>
+        <label id="labelNroPagina"></label>
+        <button id="buttonSiguiente" onclick="PaginaSiguiente()">Siguiente</button>
+        <button id="buttonUltima" onclick="PaginaUltima()">Ultima</button>
+    </div>
 </div>
 
