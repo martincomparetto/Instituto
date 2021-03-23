@@ -1,7 +1,7 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 
-namespace InstWeb.Controllers
+namespace InstWeb
 {
     public static class SessionExtensions
     {
@@ -16,4 +16,5 @@ namespace InstWeb.Controllers
             return value == null ? default : JsonSerializer.Deserialize<T>(value);
         }
     }
+
 }

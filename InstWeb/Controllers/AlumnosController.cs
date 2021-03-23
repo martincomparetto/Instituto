@@ -11,7 +11,7 @@ namespace InstWeb.Controllers
     public class AlumnosController : Controller
     {
         private InstitutoContext _context;
-        
+
         public AlumnosController(InstitutoContext context)
         {
             _context = context;
@@ -32,9 +32,11 @@ namespace InstWeb.Controllers
         public IActionResult Guardar([Bind("Nombre,Apellido,Email,Domicilio,Telefono,FechaNacimiento,DNI,Legajo")] Alumno alumno)
         {
             alumno.ID = Guid.NewGuid();
-            
+
             _context.Alumnos.Add(alumno);
             _context.SaveChanges();
+
+            GuardarAlumnoEnSession(alumno);
 
             return View("Details", alumno);
         }
@@ -52,6 +54,34 @@ namespace InstWeb.Controllers
             _context.SaveChanges();
 
             return View(alumno);
+        }
+
+        // GET: Alumnos/Details/5
+        public IActionResult Details(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var alumno = _context.Alumnos.FirstOrDefault(m => m.ID == id);
+            if (alumno == null)
+            {
+                return NotFound();
+            }
+
+            return View(alumno);
+        }
+
+        public void GuardarAlumnoEnSession(Alumno alumnoAGuardar)
+        {
+            HttpContext.Session.Set<Alumno>("AlumnoActivo", alumnoAGuardar);
+        }
+
+        public JsonResult VerAlumnoEnSession()
+        {
+            Alumno alumnoEnSession = HttpContext.Session.Get<Alumno>("AlumnoActivo");
+            return Json(alumnoEnSession);
         }
     }
 }

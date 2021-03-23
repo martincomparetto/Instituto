@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Identity;
 
 namespace InstWeb
 {
@@ -35,8 +36,10 @@ namespace InstWeb
 
             services.AddDbContext<InstitutoContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("SQLServerConnection")));
-            //services.AddDbContext<InstitutoContext>(options =>
-            //    options.UseSqlite(Configuration.GetConnectionString("SqliteConnection")));
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<InstitutoContext>();
+
             services.AddControllersWithViews();
         }
 
@@ -58,6 +61,7 @@ namespace InstWeb
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseSession();

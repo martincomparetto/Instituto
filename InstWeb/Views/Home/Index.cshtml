@@ -10,7 +10,8 @@
     <button onclick="Saludar(document.getElementById('nombre').value)">Saludar</button>
     <br>
     Sumar: <input type="number" id="num1"> + <input type="number" id="num2">
-    <button onclick="Sumar(document.getElementById('num1').value, document.getElementById('num2').value)">Resultado</button>
+    <button
+        onclick="Sumar(document.getElementById('num1').value, document.getElementById('num2').value)">Resultado</button>
     <input type="number" id="resultado" readonly>
     <br>
     <br>
@@ -28,5 +29,12 @@
         <button id="buttonSiguiente" onclick="PaginaSiguiente()">Siguiente</button>
         <button id="buttonUltima" onclick="PaginaUltima()">Ultima</button>
     </div>
+    <div>
+        <button type="button"
+            onclick="location.href='@Url.Action("AgregarUsuarioSession", "Usuarios")?mail=hola&nombre=pepe'">Set UsuarioSession</button>
+        />
+        <button type="button"
+            onclick="location.href='@Url.Action("ConsultarUsuario", "Usuarios")'">Get UsuarioSession</button>
+        />
+    </div>
 </div>
-

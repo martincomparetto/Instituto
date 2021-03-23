@@ -1,16 +1,15 @@
 using InstWeb.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace InstWeb.Data
 {
-    public class InstitutoContext : DbContext
+    public class InstitutoContext : IdentityDbContext
     {
         public InstitutoContext(DbContextOptions<InstitutoContext> options) : base(options)
         {
             
         }
-        // protected override void OnConfiguring(DbContextOptionsBuilder options)
-        //             => options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Instituto;Integrated Security=SSPI");
 
         public DbSet<Alumno> Alumnos { get; set; }
 
